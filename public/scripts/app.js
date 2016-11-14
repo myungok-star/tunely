@@ -9,50 +9,54 @@
 /* hard-coded data! */
 var sampleAlbums = [];
 sampleAlbums.push({
-             artistName: 'Ladyhawke',
-             name: 'Ladyhawke',
-             releaseDate: '2008, November 18',
-             genres: [ 'new wave', 'indie rock', 'synth pop' ]
-           });
+    artistName: 'Ladyhawke',
+    name: 'Ladyhawke',
+    releaseDate: '2008, November 18',
+    genres: ['new wave', 'indie rock', 'synth pop']
+});
 sampleAlbums.push({
-             artistName: 'The Knife',
-             name: 'Silent Shout',
-             releaseDate: '2006, February 17',
-             genres: [ 'synth pop', 'electronica', 'experimental' ]
-           });
+    artistName: 'The Knife',
+    name: 'Silent Shout',
+    releaseDate: '2006, February 17',
+    genres: ['synth pop', 'electronica', 'experimental']
+});
 sampleAlbums.push({
-             artistName: 'Juno Reactor',
-             name: 'Shango',
-             releaseDate: '2000, October 9',
-             genres: [ 'electronic', 'goa trance', 'tribal house' ]
-           });
+    artistName: 'Juno Reactor',
+    name: 'Shango',
+    releaseDate: '2000, October 9',
+    genres: ['electronic', 'goa trance', 'tribal house']
+});
 sampleAlbums.push({
-             artistName: 'Philip Wesley',
-             name: 'Dark Night of the Soul',
-             releaseDate: '2008, September 12',
-             genres: [ 'piano' ]
-           });
+    artistName: 'Philip Wesley',
+    name: 'Dark Night of the Soul',
+    releaseDate: '2008, September 12',
+    genres: ['piano']
+});
 /* end of hard-coded data */
+
+//handlebars template
 
 
 
 
 $(document).ready(function() {
-  console.log('app.js loaded!');
-//handlebars template
-  var source = $('#album-li-template').html();
-  var template = Handlebars.compile(source);
+            console.log('app.js loaded!');
 
-  function renderAlbum(album) {
-    //console.log('rendering album:', album);
-  var albumHtml = template({ albums: sampleAlbums });
-  //console.log(albumHtml);
-  $("#albums").append(albumHtml);
+            var source = $('#album-li-template').html();
+            var template = Handlebars.compile(source);
 
-}
+            sampleAlbums.forEach(function(e) {
+                    renderAlbum(e);
+                });
 
-renderAlbum(sampleAlbums);
+            function renderAlbum(e) {
+                //console.log('rendering album:', album);
+                var albumHtml = template({album: e});
+                //  console.log(albumHtml);
+                $("#albums").append(albumHtml);
+            }
 
-});
 
-// this function takes a single album and renders it to the page
+            });
+
+        // this function takes a single album and renders it to the page
